@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator NPK Tebu — Rekomendasi Pupuk Presisi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-900: #0d2b1a;
+    --green-800: #1a4a2e;
+    --green-700: #236037;
+    --green-600: #2d7a45;
+    --green-500: #3a9955;
+    --green-400: #5ab870;
+    --green-300: #8fd4a0;
+    --green-200: #c0e8cb;
+    --green-100: #e4f5e9;
+    --green-50:  #f2faf5;
+    --soil-900: #2b1a0d;
+    --soil-700: #5c3a1a;
+    --soil-500: #8b5e2e;
+    --soil-300: #c49a6c;
+    --soil-100: #f0e0cc;
+    --amber:     #e8a020;
+    --blue-deep: #1a3a5c;
+    --blue-mid:  #2a6db5;
+    --text-primary: #111a14;
+    --text-secondary: #4a6050;
+    --text-muted: #8aa090;
+    --border: #d0e4d8;
+    --bg-page: #f5faf6;
+    --bg-card: #ffffff;
+    --bg-panel: #edf7f0;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --shadow-card: 0 1px 4px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg-page);
+    color: var(--text-primary);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--green-900);
+    color: #fff;
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--green-800);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+  }
+  .logo-icon {
+    width: 28px; height: 28px;
+    background: var(--green-600);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+  }
+  .logo-sub {
+    font-weight: 300;
+    color: var(--green-300);
+    font-size: 13px;
+    margin-left: 2px;
+  }
+  .header-badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--green-300);
+    background: var(--green-800);
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--green-700);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--green-900);
+    color: #fff;
+    padding: 3.5rem 2rem 3rem;
+    border-bottom: 1px solid var(--green-800);
+  }
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: end;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--green-400);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 14px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--green-400);
+  }
+  .hero-desc {
+    font-size: 15px;
+    color: var(--green-300);
+    max-width: 520px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: right;
+    min-width: 160px;
+  }
+  .hero-stat-val {
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1;
+  }
+  .hero-stat-lbl {
+    font-size: 11px;
+    color: var(--green-400);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 3px;
+  }
+  .hero-stat-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--green-800);
+  }
+
+  /* ── MAIN LAYOUT ── */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 3px; height: 12px;
+    background: var(--green-500);
+    border-radius: 2px;
+  }
+
+  /* ── GRID LAYOUTS ── */
+  .input-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 2rem;
+  }
+  .config-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 2rem;
+  }
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 2rem;
+  }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 2rem;
+  }
+  .jadwal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 2rem;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow-card);
+  }
+  .card-sm {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 16px;
+  }
+  .panel {
+    background: var(--bg-panel);
+    border: 1px solid var(--green-200);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+  }
+
+  /* ── NPK INPUT CARDS ── */
+  .npk-card {
+    background: var(--bg-card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow-card);
+    transition: border-color 0.2s;
+  }
+  .npk-card:focus-within { border-color: var(--green-500); }
+  .npk-card .param-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .npk-card.n-card .param-icon { background: #e8f4fd; color: #1a6db5; }
+  .npk-card.p-card .param-icon { background: #fff4e0; color: #b07010; }
+  .npk-card.k-card .param-icon { background: #f0e8ff; color: #6b35b5; }
+  .npk-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+  .npk-card .target-range {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+  .npk-card input[type=number] {
+    width: 100%;
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--text-primary);
+    border: none;
+    border-bottom: 2px solid var(--border);
+    border-radius: 0;
+    padding: 6px 0;
+    background: transparent;
+    outline: none;
+    transition: border-color 0.2s;
+    -moz-appearance: textfield;
+  }
+  .npk-card input[type=number]::-webkit-inner-spin-button,
+  .npk-card input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
+  .npk-card input[type=number]:focus { border-bottom-color: var(--green-500); }
+  .npk-card .unit-lbl {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-family: var(--mono);
+  }
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-family: var(--mono);
+  }
+  .status-pill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; }
+  .pill-critical { background: #fde8e8; color: #b02020; }
+  .pill-critical::before { background: #e03030; }
+  .pill-low { background: #fff3e0; color: #a05010; }
+  .pill-low::before { background: #e08020; }
+  .pill-ok  { background: #e6f7ed; color: #1a7a38; }
+  .pill-ok::before  { background: #28a84a; }
+  .pill-high { background: #e8e8ff; color: #4040b0; }
+  .pill-high::before { background: #6060cc; }
+
+  /* ── RANGE SLIDER CONFIG ── */
+  .config-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 16px 18px;
+  }
+  .config-card label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .config-card .val-display {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-primary);
+    float: right;
+  }
+  input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    outline: none;
+    margin: 6px 0;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--green-600);
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px var(--green-500);
+    transition: transform 0.1s;
+  }
+  input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+  input[type=range]::-moz-range-thumb {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--green-600);
+    cursor: pointer;
+    border: 2px solid #fff;
+  }
+  .config-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-family: var(--mono);
+  }
+
+  /* ── HITUNG BUTTON ── */
+  .btn-hitung {
+    width: 100%;
+    padding: 14px 24px;
+    background: var(--green-800);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    margin-bottom: 2rem;
+    transition: background 0.2s, transform 0.1s;
+    letter-spacing: -0.01em;
+  }
+  .btn-hitung:hover { background: var(--green-700); }
+  .btn-hitung:active { transform: scale(0.99); }
+
+  /* ── DEFICIENCY BARS ── */
+  .bars-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    margin-bottom: 2rem;
+  }
+  .bar-row {
+    display: grid;
+    grid-template-columns: 28px 1fr 80px 100px;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .bar-row:last-child { margin-bottom: 0; }
+  .bar-name {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+  .bar-track {
+    height: 10px;
+    background: var(--bg-panel);
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+    width: 0%;
+  }
+  .bar-fill-n { background: linear-gradient(90deg, #2a6db5, #5a9de0); }
+  .bar-fill-p { background: linear-gradient(90deg, #ba7517, #e8a020); }
+  .bar-fill-k { background: linear-gradient(90deg, #6b35b5, #9a65e0); }
+  .bar-def {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: right;
+  }
+  .bar-pct {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-align: right;
+  }
+
+  /* ── RESULT CARDS ── */
+  .result-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow-card);
+  }
+  .result-card .pupuk-brand {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  .result-card .pupuk-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+  .result-card .pupuk-content {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+  .result-card .amount-per-ha {
+    font-family: var(--mono);
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1;
+  }
+  .result-card .amount-unit {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+    margin-bottom: 12px;
+  }
+  .result-card .amount-total {
+    background: var(--bg-panel);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .result-card .amount-total .total-val {
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 13px;
+  }
+  .result-card.zero-card .amount-per-ha { color: var(--green-600); }
+  .result-card .kekurangan-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+
+  /* ── SUMMARY CARDS ── */
+  .summary-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 16px;
+  }
+  .summary-card .s-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .summary-card .s-val {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  .summary-card .s-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+    font-family: var(--mono);
+  }
+
+  /* ── JADWAL ── */
+  .jadwal-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px 20px;
+    box-shadow: var(--shadow-card);
+    border-top: 3px solid var(--green-500);
+  }
+  .jadwal-card:nth-child(2) { border-top-color: var(--amber); }
+  .jadwal-card:nth-child(3) { border-top-color: var(--green-400); }
+  .jadwal-step {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 6px;
+  }
+  .jadwal-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+  .jadwal-items { display: flex; flex-direction: column; gap: 6px; }
+  .jadwal-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 6px 10px;
+    background: var(--bg-panel);
+    border-radius: var(--radius-sm);
+  }
+  .jadwal-item .ji-name { color: var(--text-secondary); }
+  .jadwal-item .ji-dose { font-weight: 500; color: var(--text-primary); }
+
+  /* ── WARNING BOX ── */
+  .warning-box {
+    background: #fff8e0;
+    border: 1px solid #f0d060;
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #7a5a00;
+    margin-bottom: 14px;
+    display: none;
+    font-family: var(--mono);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  footer p {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--mono);
+    line-height: 1.8;
+  }
+  footer a { color: var(--green-600); text-decoration: none; }
+
+  /* ── PRINT ── */
+  .print-btn {
+    float: right;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 4px 12px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .print-btn:hover { border-color: var(--green-500); color: var(--green-600); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: row; text-align: left; }
+    .input-grid, .result-grid, .jadwal-grid, .summary-grid { grid-template-columns: 1fr; }
+    .config-grid { grid-template-columns: 1fr; }
+    .bar-row { grid-template-columns: 28px 1fr 60px; }
+    .bar-pct { display: none; }
+  }
+
+  @media print {
+    header, .btn-hitung, .print-btn { display: none; }
+    body { background: white; }
+    .card, .npk-card, .result-card, .jadwal-card { box-shadow: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bar-fill { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">🌿</div>
+      <span>NutriTebu <span class="logo-sub">/ Kalkulator NPK</span></span>
+    </div>
+    <span class="header-badge">Sensor RS485 · Modbus RTU</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Precision Fertilization System</p>
+      <h1>Rekomendasi pupuk<br>dari <em>data sensor</em> ke lapangan</h1>
+      <p class="hero-desc">Masukkan pembacaan sensor NPK RS485 dari lahan tebu Anda. Sistem menghitung kebutuhan Urea, TSP, dan KCl secara otomatis berdasarkan kekurangan hara dan parameter lahan.</p>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-val">~88%</div>
+        <div class="hero-stat-lbl">Akurasi sensor vs lab</div>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div>
+        <div class="hero-stat-val">±2%</div>
+        <div class="hero-stat-lbl">Presisi spesifikasi FS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main>
+
+  <!-- INPUT NPK -->
+  <div class="section-label">Pembacaan sensor NPK <span style="margin-left:auto"><button class="print-btn" onclick="window.print()">🖨 Cetak laporan</button></span></div>
+  <div class="input-grid">
+    <div class="npk-card n-card">
+      <div class="param-icon">N</div>
+      <h3>Nitrogen</h3>
+      <div class="target-range">Target: 150 – 200 mg/kg</div>
+      <input type="number" id="n-val" value="90" min="0" max="1999" step="1" aria-label="Nilai Nitrogen">
+      <div class="unit-lbl">mg/kg</div>
+      <div class="status-pill pill-low" id="n-status">Rendah</div>
+    </div>
+    <div class="npk-card p-card">
+      <div class="param-icon">P</div>
+      <h3>Fosfor</h3>
+      <div class="target-range">Target: 30 – 60 mg/kg</div>
+      <input type="number" id="p-val" value="25" min="0" max="1999" step="1" aria-label="Nilai Fosfor">
+      <div class="unit-lbl">mg/kg</div>
+      <div class="status-pill pill-low" id="p-status">Rendah</div>
+    </div>
+    <div class="npk-card k-card">
+      <div class="param-icon">K</div>
+      <h3>Kalium</h3>
+      <div class="target-range">Target: 100 – 150 mg/kg</div>
+      <input type="number" id="k-val" value="80" min="0" max="1999" step="1" aria-label="Nilai Kalium">
+      <div class="unit-lbl">mg/kg</div>
+      <div class="status-pill pill-low" id="k-status">Rendah</div>
+    </div>
+  </div>
+
+  <!-- CONFIG LAHAN -->
+  <div class="section-label">Parameter lahan</div>
+  <div class="config-grid">
+    <div class="config-card">
+      <label>Luas lahan <span class="val-display" id="luas-out">1 ha</span></label>
+      <input type="range" id="luas" min="1" max="500" step="1" value="1" aria-label="Luas lahan">
+      <div class="config-sub">1 – 500 hektar</div>
+    </div>
+    <div class="config-card">
+      <label>Kedalaman olah tanah <span class="val-display" id="kedalaman-out">20 cm</span></label>
+      <input type="range" id="kedalaman" min="15" max="40" step="5" value="20" aria-label="Kedalaman olah tanah">
+      <div class="config-sub">15 – 40 cm</div>
+    </div>
+    <div class="config-card">
+      <label>Bulk density tanah <span class="val-display" id="bd-out">1.3 g/cm³</span></label>
+      <input type="range" id="bd" min="1.0" max="1.6" step="0.1" value="1.3" aria-label="Bulk density">
+      <div class="config-sub">Tanah mineral tropis: 1.1–1.4</div>
+    </div>
+    <div class="config-card">
+      <label>Efisiensi serapan N <span class="val-display" id="eff-out">50%</span></label>
+      <input type="range" id="eff" min="30" max="80" step="5" value="50" aria-label="Efisiensi serapan N">
+      <div class="config-sub">Tanah tropis lembab: 40–60%</div>
+    </div>
+  </div>
+
+  <button class="btn-hitung" onclick="hitung()" aria-label="Hitung kebutuhan pupuk">Hitung kebutuhan pupuk →</button>
+
+  <!-- WARNINGS -->
+  <div id="warning-n" class="warning-box">⚠ N melebihi target — tidak perlu tambahan Urea</div>
+  <div id="warning-p" class="warning-box">⚠ P melebihi target — tidak perlu tambahan TSP</div>
+  <div id="warning-k" class="warning-box">⚠ K melebihi target — tidak perlu tambahan KCl</div>
+
+  <!-- DEFICIENCY BARS -->
+  <div class="section-label">Kekurangan hara vs target</div>
+  <div class="bars-section">
+    <div class="bar-row">
+      <span class="bar-name">N</span>
+      <div class="bar-track"><div class="bar-fill bar-fill-n" id="bar-n"></div></div>
+      <span class="bar-def" id="bar-n-def">— mg/kg</span>
+      <span class="bar-pct" id="bar-n-pct">—%</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-name">P</span>
+      <div class="bar-track"><div class="bar-fill bar-fill-p" id="bar-p"></div></div>
+      <span class="bar-def" id="bar-p-def">— mg/kg</span>
+      <span class="bar-pct" id="bar-p-pct">—%</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-name">K</span>
+      <div class="bar-track"><div class="bar-fill bar-fill-k" id="bar-k"></div></div>
+      <span class="bar-def" id="bar-k-def">— mg/kg</span>
+      <span class="bar-pct" id="bar-k-pct">—%</span>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="section-label">Kebutuhan pupuk per hektar</div>
+  <div class="result-grid">
+    <div class="result-card" id="card-urea">
+      <div class="pupuk-brand">Pupuk N</div>
+      <div class="pupuk-name">Urea</div>
+      <div class="pupuk-content">46% N · 46-0-0</div>
+      <div class="amount-per-ha" id="res-urea">—</div>
+      <div class="amount-unit">kg / ha</div>
+      <div class="amount-total">
+        <span>Total <span id="luas-label-urea">1</span> ha</span>
+        <span class="total-val" id="total-urea">— kg</span>
+      </div>
+      <div class="kekurangan-tag" id="ket-urea">—</div>
+    </div>
+    <div class="result-card" id="card-tsp">
+      <div class="pupuk-brand">Pupuk P</div>
+      <div class="pupuk-name">TSP</div>
+      <div class="pupuk-content">46% P₂O₅ · 0-46-0</div>
+      <div class="amount-per-ha" id="res-tsp">—</div>
+      <div class="amount-unit">kg / ha</div>
+      <div class="amount-total">
+        <span>Total <span id="luas-label-tsp">1</span> ha</span>
+        <span class="total-val" id="total-tsp">— kg</span>
+      </div>
+      <div class="kekurangan-tag" id="ket-tsp">—</div>
+    </div>
+    <div class="result-card" id="card-kcl">
+      <div class="pupuk-brand">Pupuk K</div>
+      <div class="pupuk-name">KCl</div>
+      <div class="pupuk-content">60% K₂O · 0-0-60</div>
+      <div class="amount-per-ha" id="res-kcl">—</div>
+      <div class="amount-unit">kg / ha</div>
+      <div class="amount-total">
+        <span>Total <span id="luas-label-kcl">1</span> ha</span>
+        <span class="total-val" id="total-kcl">— kg</span>
+      </div>
+      <div class="kekurangan-tag" id="ket-kcl">—</div>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="section-label">Ringkasan lahan</div>
+  <div class="summary-grid">
+    <div class="summary-card">
+      <div class="s-label">Berat tanah</div>
+      <div class="s-val" id="sum-berat">—</div>
+      <div class="s-sub">ton / ha</div>
+    </div>
+    <div class="summary-card">
+      <div class="s-label">Total pupuk seluruh lahan</div>
+      <div class="s-val" id="sum-total">—</div>
+      <div class="s-sub" id="sum-lahan">— ha</div>
+    </div>
+    <div class="summary-card">
+      <div class="s-label">Estimasi biaya pupuk*</div>
+      <div class="s-val" id="sum-biaya">—</div>
+      <div class="s-sub">*Urea 4.500 · TSP 8.000 · KCl 9.000 /kg</div>
+    </div>
+  </div>
+
+  <!-- JADWAL -->
+  <div class="section-label">Jadwal aplikasi (3 tahap)</div>
+  <div class="jadwal-grid">
+    <div class="jadwal-card">
+      <div class="jadwal-step">Aplikasi 1</div>
+      <div class="jadwal-title">Saat tanam</div>
+      <div class="jadwal-items">
+        <div class="jadwal-item">
+          <span class="ji-name">TSP</span>
+          <span class="ji-dose" id="j1-tsp">— kg/ha</span>
+        </div>
+        <div class="jadwal-item">
+          <span class="ji-name">KCl</span>
+          <span class="ji-dose" id="j1-kcl">— kg/ha</span>
+        </div>
+        <div class="jadwal-item">
+          <span class="ji-name">Urea (1/3)</span>
+          <span class="ji-dose" id="j1-urea">— kg/ha</span>
+        </div>
+      </div>
+    </div>
+    <div class="jadwal-card">
+      <div class="jadwal-step">Aplikasi 2</div>
+      <div class="jadwal-title">1 bulan setelah tanam</div>
+      <div class="jadwal-items">
+        <div class="jadwal-item">
+          <span class="ji-name">Urea (1/3)</span>
+          <span class="ji-dose" id="j2-urea">— kg/ha</span>
+        </div>
+        <div class="jadwal-item" style="background:transparent;padding:0;">
+          <span class="ji-name" style="font-size:11px; color:var(--text-muted)">TSP & KCl tidak diperlukan</span>
+        </div>
+      </div>
+    </div>
+    <div class="jadwal-card">
+      <div class="jadwal-step">Aplikasi 3</div>
+      <div class="jadwal-title">3 bulan setelah tanam</div>
+      <div class="jadwal-items">
+        <div class="jadwal-item">
+          <span class="ji-name">Urea (1/3)</span>
+          <span class="ji-dose" id="j3-urea">— kg/ha</span>
+        </div>
+        <div class="jadwal-item" style="background:transparent;padding:0;">
+          <span class="ji-name" style="font-size:11px; color:var(--text-muted)">Pemupukan susulan terakhir</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATATAN -->
+  <div class="section-label">Catatan metodologi</div>
+  <div class="panel" style="display:grid; grid-template-columns:1fr 1fr; gap:16px; font-size:13px; color:var(--text-secondary); line-height:1.7;">
+    <div>
+      <strong style="color:var(--text-primary); font-size:12px; font-family:var(--mono); text-transform:uppercase; letter-spacing:0.05em;">Formula perhitungan</strong>
+      <p style="margin-top:8px;">Berat tanah = 10.000 m² × kedalaman (m) × bulk density (kg/m³)</p>
+      <p>Urea = (defN × berat_tanah / efisiensi) / 0,46</p>
+      <p>TSP = (defP × 2,29 × berat_tanah) / 0,46</p>
+      <p>KCl = (defK × 1,20 × berat_tanah) / 0,60</p>
+    </div>
+    <div>
+      <strong style="color:var(--text-primary); font-size:12px; font-family:var(--mono); text-transform:uppercase; letter-spacing:0.05em;">Akurasi sensor vs laboratorium</strong>
+      <p style="margin-top:8px;">Sensor NPK RS485 memiliki akurasi rata-rata ~88% dibanding uji lab. Error tertinggi umumnya pada Fosfor (P) hingga 13%.</p>
+      <p style="margin-top:6px;">Untuk keputusan pemupukan skala besar, validasi dengan uji laboratorium tanah sangat dianjurkan.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p>NutriTebu · Kalkulator NPK Tebu berbasis Sensor RS485<br>
+    Referensi: JXCT, Renke, arXiv 2025, NIH/PMC 2024 · Perhitungan bersifat estimasi teoritis<br>
+    Target NPK tebu: N 150–200 · P 30–60 · K 100–150 mg/kg</p>
+  </div>
+</footer>
+
+<script>
+  const N_TARGET = 200, P_TARGET = 60, K_TARGET = 150;
+
+  function statusInfo(val, lo, hi) {
+    if (val < lo * 0.5) return ['Sangat rendah', 'pill-critical'];
+    if (val < lo)       return ['Rendah',        'pill-low'];
+    if (val <= hi)      return ['Cukup',          'pill-ok'];
+    return               ['Berlebih',             'pill-high'];
+  }
+
+  function updateStatus() {
+    [['n', 150, 200], ['p', 30, 60], ['k', 100, 150]].forEach(([id, lo, hi]) => {
+      const val = +document.getElementById(id + '-val').value;
+      const [txt, cls] = statusInfo(val, lo, hi);
+      const el = document.getElementById(id + '-status');
+      el.textContent = txt;
+      el.className = 'status-pill ' + cls;
+    });
+  }
+
+  ['n-val', 'p-val', 'k-val'].forEach(id => {
+    document.getElementById(id).addEventListener('input', updateStatus);
+  });
+
+  const rangeConfigs = [
+    ['luas', v => v + ' ha'],
+    ['kedalaman', v => v + ' cm'],
+    ['bd', v => parseFloat(v).toFixed(1) + ' g/cm³'],
+    ['eff', v => v + '%'],
+  ];
+  rangeConfigs.forEach(([id, fmt]) => {
+    const el = document.getElementById(id);
+    const out = document.getElementById(id + '-out');
+    el.addEventListener('input', () => { out.textContent = fmt(el.value); });
+  });
+
+  function fmt(n) { return Math.round(n).toLocaleString('id-ID'); }
+
+  function hitung() {
+    const n = +document.getElementById('n-val').value;
+    const p = +document.getElementById('p-val').value;
+    const k = +document.getElementById('k-val').value;
+    const luas = +document.getElementById('luas').value;
+    const kedalaman = +document.getElementById('kedalaman').value / 100;
+    const bd = +document.getElementById('bd').value;
+    const eff = +document.getElementById('eff').value / 100;
+
+    const beratTanah = 10000 * kedalaman * bd * 1000; // kg/ha
+
+    const defN = Math.max(0, N_TARGET - n);
+    const defP = Math.max(0, P_TARGET - p);
+    const defK = Math.max(0, K_TARGET - k);
+
+    const needN = defN * beratTanah / 1e6; // kg N/ha
+    const needP = defP * beratTanah / 1e6; // kg P/ha
+    const needK = defK * beratTanah / 1e6; // kg K/ha
+
+    const ureaHa = defN > 0 ? Math.round(needN / 0.46 / eff) : 0;
+    const tspHa  = defP > 0 ? Math.round((needP * 2.29) / 0.46) : 0;
+    const kclHa  = defK > 0 ? Math.round((needK * 1.20) / 0.60) : 0;
+
+    const totalUrea = Math.round(ureaHa * luas);
+    const totalTsp  = Math.round(tspHa  * luas);
+    const totalKcl  = Math.round(kclHa  * luas);
+
+    // Results
+    document.getElementById('res-urea').textContent = fmt(ureaHa);
+    document.getElementById('res-tsp').textContent  = fmt(tspHa);
+    document.getElementById('res-kcl').textContent  = fmt(kclHa);
+
+    [['urea', totalUrea], ['tsp', totalTsp], ['kcl', totalKcl]].forEach(([id, tot]) => {
+      document.getElementById('luas-label-' + id).textContent = luas;
+      document.getElementById('total-' + id).textContent = fmt(tot) + ' kg';
+    });
+
+    document.getElementById('ket-urea').textContent = defN > 0
+      ? 'Kekurangan N: ' + defN + ' mg/kg'
+      : '✓ N sudah mencukupi target';
+    document.getElementById('ket-tsp').textContent = defP > 0
+      ? 'Kekurangan P: ' + defP + ' mg/kg'
+      : '✓ P sudah mencukupi target';
+    document.getElementById('ket-kcl').textContent = defK > 0
+      ? 'Kekurangan K: ' + defK + ' mg/kg'
+      : '✓ K sudah mencukupi target';
+
+    document.getElementById('card-urea').classList.toggle('zero-card', defN === 0);
+    document.getElementById('card-tsp').classList.toggle('zero-card',  defP === 0);
+    document.getElementById('card-kcl').classList.toggle('zero-card',  defK === 0);
+
+    // Bars
+    const barData = [
+      ['n', defN, N_TARGET],
+      ['p', defP, P_TARGET],
+      ['k', defK, K_TARGET],
+    ];
+    barData.forEach(([id, def, target]) => {
+      const pct = Math.round(Math.min((def / target) * 100, 100));
+      document.getElementById('bar-' + id).style.width = pct + '%';
+      document.getElementById('bar-' + id + '-def').textContent = def > 0 ? 'kurang ' + def + ' mg/kg' : 'cukup';
+      document.getElementById('bar-' + id + '-pct').textContent = def > 0 ? pct + '% defisit' : '—';
+    });
+
+    // Warnings
+    ['n', 'p', 'k'].forEach(id => {
+      document.getElementById('warning-' + id).style.display = 'none';
+    });
+    const vals = { n, p, k };
+    const targets = { n: N_TARGET, p: P_TARGET, k: K_TARGET };
+    ['n', 'p', 'k'].forEach(id => {
+      if (vals[id] > targets[id]) {
+        document.getElementById('warning-' + id).style.display = 'block';
+      }
+    });
+
+    // Summary
+    document.getElementById('sum-berat').textContent = fmt(beratTanah / 1000);
+    document.getElementById('sum-total').textContent = fmt(totalUrea + totalTsp + totalKcl) + ' kg';
+    document.getElementById('sum-lahan').textContent = luas + ' ha';
+
+    const biaya = (totalUrea * 4500) + (totalTsp * 8000) + (totalKcl * 9000);
+    document.getElementById('sum-biaya').textContent = 'Rp ' + biaya.toLocaleString('id-ID');
+
+    // Jadwal — Urea dibagi 3
+    const urea3 = Math.round(ureaHa / 3);
+    document.getElementById('j1-tsp').textContent  = fmt(tspHa) + ' kg/ha';
+    document.getElementById('j1-kcl').textContent  = fmt(kclHa) + ' kg/ha';
+    document.getElementById('j1-urea').textContent = fmt(urea3) + ' kg/ha';
+    document.getElementById('j2-urea').textContent = fmt(urea3) + ' kg/ha';
+    document.getElementById('j3-urea').textContent = fmt(urea3) + ' kg/ha';
+
+    updateStatus();
+  }
+
+  hitung();
+</script>
+</body>
+</html>
